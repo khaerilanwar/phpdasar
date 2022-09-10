@@ -24,6 +24,7 @@
             <th>Email</th>
             <th>Jurusan</th>
             <th>Gambar</th>
+            <th>Aksi</th>
         </tr>
         <?php 
             $query = "SELECT * FROM mahasiswa ORDER by nama";
@@ -39,6 +40,10 @@
                 <td><?= $mhs["email"]; ?></td>
                 <td>
                     <img src="img/<?= $mhs["gambar"]; ?>" alt="Gambar Mahasiswa" width="50">
+                </td>
+                <td>
+                    <a href="ubah.php?id=<?= $mhs['id']; ?>">ubah</a>
+                    <a href="hapus.php?id=<?= $mhs['id']; ?>">hapus</a>
                 </td>
             </tr>
         <?php endforeach; ?>

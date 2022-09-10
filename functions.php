@@ -29,4 +29,12 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function hapus($id) {
+        global $conn;
+        $query = "DELETE FROM mahasiswa where id = $id";
+        mysqli_query($conn, $query);
+
+        return mysqli_affected_rows($conn);
+    }
 ?>

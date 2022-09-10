@@ -13,19 +13,19 @@
     if(isset($_POST["submit"])) {
         if( in_array($_POST["nim"], $rows) ) {
             echo "
-            <script>alert('Data Mahasiswa Sudah Ada')</script>
-            ";
+                    <script>alert('Data Mahasiswa Sudah Ada')</script>
+                ";
             header("Refresh:0");
             exit;
         }
         elseif(tambahMahasiswa($_POST) > 0) {
             echo "
-            <script>alert('Data Berhasil DItambahkan')</script>
-            ";
+                    <script>alert('Data Berhasil DItambahkan')</script>
+                ";
         } else {
             echo "
-            <script>alert('Data Gagal DItambahkan')</script>
-            ";
+                    <script>alert('Data Gagal DItambahkan')</script>
+                ";
         }
         header('location: index.php');
     }
