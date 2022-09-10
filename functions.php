@@ -16,4 +16,10 @@
         }
         return $rows;
     }
+
+    function tambahMahasiswa($nama, $nim, $email, $jurusan, $alamat) {
+        global $conn;
+        $query = "INSERT INTO mahasiswa VALUES('', '$nama','$nim', '$email','$jurusan', '$alamat')";
+        mysqli_query($conn, $query);
+    }
 ?>

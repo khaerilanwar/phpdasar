@@ -1,3 +1,17 @@
+<?php 
+    require "functions.php";
+
+        if(isset($_POST["submit"])) {
+            $nim = $_POST["nim"];
+            $nama = $_POST["nama"];
+            $jurusan = $_POST["jurusan"];
+            $email = $_POST["email"];
+            $alamat = $_POST["alamat"];
+            
+            tambahMahasiswa($nama, $nim, $email, $jurusan, $alamat);
+    }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,10 +46,11 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit">Kirim</button>
+                    <button type="submit" name="submit">Kirim</button>
                 </td>
             </tr>
         </table>
     </form>
+    <a href="index.php">Kembali</a>
 </body>
 </html>
