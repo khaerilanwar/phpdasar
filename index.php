@@ -18,23 +18,28 @@
 
     <table cellpadding="8" cellspacing="0" border="2">
         <tr>
-            <th>Nama</th>
+            <th>No.</th>
             <th>NIM</th>
-            <th>Jurusan</th>
+            <th>Nama</th>
             <th>Email</th>
-            <th>Alamat</th>
+            <th>Jurusan</th>
+            <th>Gambar</th>
         </tr>
         <?php 
             $query = "SELECT * FROM mahasiswa ORDER by nama";
             $mahasiswa =  query($query);
+            $i = 1;
         ?>
         <?php foreach($mahasiswa as $mhs) : ?>
             <tr>
-                <td><?= $mhs["nama"]; ?></td>
+                <td><?= $i++; ?></td>
                 <td><?= $mhs["nim"]; ?></td>
+                <td><?= $mhs["nama"]; ?></td>
                 <td><?= $mhs["jurusan"]; ?></td>
                 <td><?= $mhs["email"]; ?></td>
-                <td><?= $mhs["alamat"]; ?></td>
+                <td>
+                    <img src="img/<?= $mhs["gambar"]; ?>" alt="Gambar Mahasiswa" width="50">
+                </td>
             </tr>
         <?php endforeach; ?>
 

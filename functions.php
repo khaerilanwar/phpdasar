@@ -17,9 +17,16 @@
         return $rows;
     }
 
-    function tambahMahasiswa($nama, $nim, $email, $jurusan, $alamat) {
+    function tambahMahasiswa($data) {
         global $conn;
-        $query = "INSERT INTO mahasiswa VALUES('', '$nama','$nim', '$email','$jurusan', '$alamat')";
+        $nama = $data["nama"];
+        $nim = $data["nim"];
+        $email = $data["email"];
+        $jurusan = $data["jurusan"];
+        $gambar = $data["gambar"];
+        $query = "INSERT INTO mahasiswa VALUES('', '$nim','$nama', '$email','$jurusan', '$gambar')";
         mysqli_query($conn, $query);
+
+        return mysqli_affected_rows($conn);
     }
 ?>

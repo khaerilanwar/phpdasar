@@ -1,14 +1,33 @@
 <?php 
     require "functions.php";
 
-        if(isset($_POST["submit"])) {
-            $nim = $_POST["nim"];
-            $nama = $_POST["nama"];
-            $jurusan = $_POST["jurusan"];
-            $email = $_POST["email"];
-            $alamat = $_POST["alamat"];
-            
-            tambahMahasiswa($nama, $nim, $email, $jurusan, $alamat);
+    $data_nim = mysqli_query($conn,"SELECT nim from mahasiswa");
+    // $data_nim = mysqli_fetch_row($data_nim);
+    // var_dump($data_nim);
+    
+    $rows = [];
+    while($row = mysqli_fetch_row($data_nim)) {
+        $rows[] = implode('',$row);
+    }
+
+    if(isset($_POST["submit"])) {
+        if( in_array($_POST["nim"], $rows) ) {
+            echo "
+            <script>alert('Data Mahasiswa Sudah Ada')</script>
+            ";
+            header("Refresh:0");
+            exit;
+        }
+        elseif(tambahMahasiswa($_POST) > 0) {
+            echo "
+            <script>alert('Data Berhasil DItambahkan')</script>
+            ";
+        } else {
+            echo "
+            <script>alert('Data Gagal DItambahkan')</script>
+            ";
+        }
+        header('location: index.php');
     }
     ?>
 
@@ -41,8 +60,8 @@
                 <td><input type="text" name="email"></td>
             </tr>
             <tr>
-                <td>Alamat</td>
-                <td><input type="text" name="alamat"></td>
+                <td>Gambar</td>
+                <td><input type="text" name="gambar"></td>
             </tr>
             <tr>
                 <td colspan="2">
