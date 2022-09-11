@@ -37,4 +37,24 @@
 
         return mysqli_affected_rows($conn);
     }
+
+    function ubahData($data) {
+        global $conn;
+        $id = $data["id"];
+        $nim = $data["nim"];
+        $nama = $data["nama"];
+        $email = $data["email"];
+        $jurusan = $data["jurusan"];
+        $gambar = $data["gambar"];
+
+        $query = "UPDATE mahasiswa SET 
+                    nim = '$nim', nama = '$nama',
+                    email = '$email', jurusan = '$jurusan',
+                    gambar = '$gambar' WHERE id = '$id'
+        ";
+
+        mysqli_query($conn,$query);
+
+        return mysqli_affected_rows($conn);
+    }
 ?>
