@@ -12,6 +12,21 @@
 </head>
 <body>
     <h1>Daftar Mahasiswa Universitas</h1>
+    <form action="" method="post">
+        <input type="text" name="cari">
+        <button type="submit" name="submit">Cari</button>
+    </form>
+
+    <?php 
+        if(isset($_POST['submit'])) {
+            $mahasiswa = cari($_POST['cari']);
+        } else {
+            $query = "SELECT * FROM mahasiswa ORDER by nama";
+            $mahasiswa = query($query);
+        }
+        $i = 1;
+    ?>
+
     <a href="tambah.php">Tambah Data Mahasiswa</a>
     <br>
     <br>
@@ -26,11 +41,6 @@
             <th>Gambar</th>
             <th>Aksi</th>
         </tr>
-        <?php 
-            $query = "SELECT * FROM mahasiswa ORDER by nama";
-            $mahasiswa =  query($query);
-            $i = 1;
-        ?>
         <?php foreach($mahasiswa as $mhs) : ?>
             <tr>
                 <td><?= $i++; ?></td>
