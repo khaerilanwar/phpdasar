@@ -53,7 +53,7 @@
                 </td>
                 <td>
                     <a href="ubah.php?id=<?= $mhs['id']; ?>">ubah</a>
-                    <a href="hapus.php?id=<?= $mhs['id']; ?>">hapus</a>
+                    <a href="hapus.php?id=<?= $mhs['id']; ?>" onclick="return confirm('Apakah anda yakin ?')">hapus</a>
                 </td>
             </tr>
         <?php endforeach; ?>

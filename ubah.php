@@ -22,9 +22,11 @@
 </head>
 <body>
     <h1>Ubah Data Mahasiswa</h1>
-    <form action="" method="post">
+    <!-- untuk upload pastikan gunakan enctype -->
+    <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr> <td><input type="hidden" name="id" value="<?= $id; ?>"></td> </tr>
+            <tr> <td><input type="hidden" name="gambarLama" value="<?= $gambar; ?>"></td> </tr>
             <tr>
                 <td>NIM</td>
                 <td><input type="text" name="nim" value="<?= $nim; ?>"></td>
@@ -43,7 +45,11 @@
             </tr>
             <tr>
                 <td>Gambar</td>
-                <td><input type="text" name="gambar" value="<?= $gambar; ?>"></td>
+                <td><img src="img/<?= $gambar; ?>" alt="gambar mahasiswa"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="file" name="gambar"></td>
             </tr>
             <tr>
                 <td colspan="2">

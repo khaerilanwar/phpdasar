@@ -2,8 +2,6 @@
     require "functions.php";
 
     $data_nim = mysqli_query($conn,"SELECT nim from mahasiswa");
-    // $data_nim = mysqli_fetch_row($data_nim);
-    // var_dump($data_nim);
     
     $rows = [];
     while($row = mysqli_fetch_row($data_nim)) {
@@ -20,14 +18,19 @@
         }
         elseif(tambahMahasiswa($_POST) > 0) {
             echo "
-                    <script>alert('Data Berhasil DItambahkan')</script>
+                    <script>
+                        alert('Data Berhasil Ditambahkan');
+                        document.location.href = 'index.php';
+                    </script>
                 ";
         } else {
             echo "
-                    <script>alert('Data Gagal DItambahkan')</script>
+                    <script>
+                        alert('Data Gagal DItambahkan');
+                    </script>
                 ";
+            header("Refresh:0");
         }
-        header('location: index.php');
     }
     ?>
 
@@ -41,7 +44,7 @@
 </head>
 <body>
     <h1>Tambah Data Mahasiswa Universitas</h1>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>NIM</td>
@@ -61,7 +64,7 @@
             </tr>
             <tr>
                 <td>Gambar</td>
-                <td><input type="text" name="gambar"></td>
+                <td><input type="file" name="gambar"></td>
             </tr>
             <tr>
                 <td colspan="2">
