@@ -132,4 +132,42 @@
 
         return $namaFileBaru;
     }
+
+    function addUser($data) {
+        global $conn;
+        $username = $data["username"];
+        $nama = $data["nama"];
+        $password1 = $data["password1"];
+        $password2 = $data["password2"];
+
+        $userQuery = "SELECT username from user WHERE username = '$username'";
+        $result = mysqli_query($conn, $userQuery);
+
+        // cek apakah username sudah ada
+        if( mysqli_fetch_row($result) ) {
+            echo "
+                    <script>
+                        alert('Username sudah ada');
+                    </script>
+                ";
+            return false;
+        }
+
+        // cek apakah passwordnya sama
+        if( $password1 !== $password2 ) {
+            echo "
+                    <script>
+                        alert('Password tidak sama');
+                    </script>
+                ";
+            return false;
+        }
+
+        $password = password_hash($data["password1"], PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO user VALUES('$username', '$nama', '$password')";
+        mysqli_query($conn, $query);
+
+        return mysqli_affected_rows($conn);
+    }
 ?>
