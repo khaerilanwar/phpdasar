@@ -1,4 +1,11 @@
 <?php 
+    session_start();
+    
+    if( !isset( $_SESSION["login"] ) ) {
+        header("Location:login.php");
+        exit;
+    }
+
     require "functions.php";
 ?>
 
@@ -11,6 +18,7 @@
     <title>Daftar Mahasiswa</title>
 </head>
 <body>
+    <h1>Selamat Datang </h1>
     <h1>Daftar Mahasiswa Universitas</h1>
     <form action="" method="post">
         <input type="text" name="cari">
@@ -59,5 +67,7 @@
         <?php endforeach; ?>
 
     </table>
+    <br>
+    <a href="logout.php">Log Out</a>
 </body>
 </html>

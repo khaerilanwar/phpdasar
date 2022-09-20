@@ -1,4 +1,11 @@
 <?php 
+    session_start();
+    
+    if( !isset( $_SESSION["login"] ) ) {
+        header("Location:login.php");
+        exit;
+    }
+
     require "functions.php";
 
     $data_nim = mysqli_query($conn,"SELECT nim from mahasiswa");

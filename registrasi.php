@@ -6,6 +6,7 @@
             echo "
                     <script>
                         alert('Pengguna Berhasil Ditambahkan');
+                        document.location.href = 'index.php';
                     </script>
                 ";
         } else {
@@ -41,11 +42,11 @@
             </tr>
             <tr>
                 <td>password</td>
-                <td><input type="password1" name="password1" require></td>
+                <td><input type="password" name="password1" require></td>
             </tr>
             <tr>
                 <td>Konfirmasi password</td>
-                <td><input type="password2" name="password2" require></td>
+                <td><input type="password" name="password2" require></td>
             </tr>
             <tr>
                 <td><button type="submit" name="submit">Daftar</button></td>
